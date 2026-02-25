@@ -115,9 +115,9 @@ function Projects() {
         {/* Horizontal Scroll */}
         <div className="relative">
           {/* Left fade */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-12 z-10 bg-gradient-to-r from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-12 z-10 bg-linear-to-r from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
           {/* Right fade */}
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-12 z-10 bg-gradient-to-l from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-12 z-10 bg-linear-to-l from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
 
           <div
             ref={scrollerRef}

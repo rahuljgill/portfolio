@@ -1,4 +1,4 @@
-import cvFile from "../assets/NEW CV.pdf";
+import cvFile from "../assets/Rahul_Jake_Gill_CV.pdf";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
