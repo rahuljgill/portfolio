@@ -4,13 +4,19 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 function Projects() {
   const middleRef = useRef(null);
+  const scrollerRef = useRef(null);
   const sectionRef = useScrollAnimation();
 
   useEffect(() => {
-    middleRef.current?.scrollIntoView({
-      behavior: "instant",
-      inline: "center",
-    });
+    const scroller = scrollerRef.current;
+    const target = middleRef.current;
+
+    if (!scroller || !target) return;
+
+    const left =
+      target.offsetLeft + target.offsetWidth / 2 - scroller.clientWidth / 2;
+
+    scroller.scrollTo({ left, behavior: "instant" });
   }, []);
 
   const projects = [
@@ -101,18 +107,33 @@ function Projects() {
           </p>
         </div>
 
+        {/* Mobile Prompt */}
+        <p className="mt-2 mb-4 w-full text-center text-xs tracking-wide text-text-muted/80 dark:text-(--color-dark-text)/70 md:hidden">
+          ← Swipe to explore projects →
+        </p>
+
         {/* Horizontal Scroll */}
-        <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth pt-8 pb-8">
-          <div className="flex gap-10 px-[15%]">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                ref={index === 1 ? middleRef : null}
-                className="snap-center"
-              >
-                <ProjectCard {...project} />
-              </div>
-            ))}
+        <div className="relative">
+          {/* Left fade */}
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-12 z-10 bg-gradient-to-r from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
+          {/* Right fade */}
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-12 z-10 bg-gradient-to-l from-(--color-bg-primary) dark:from-(--color-dark-bg) to-transparent" />
+
+          <div
+            ref={scrollerRef}
+            className="overflow-x-auto snap-x snap-mandatory scroll-smooth pt-8 pb-8"
+          >
+            <div className="flex gap-10 px-[15%]">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  ref={index === 1 ? middleRef : null}
+                  className="snap-center"
+                >
+                  <ProjectCard {...project} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

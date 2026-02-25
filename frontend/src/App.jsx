@@ -54,7 +54,7 @@ function App() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center px-6 pt-8">
+      <section className="min-h-screen flex items-center px-6 pt-8 pb-20 md:pb-32">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center w-full">
           {/* RIGHT SIDE - IMAGE */}
           <div className="flex justify-center pb-12 md:order-2">
